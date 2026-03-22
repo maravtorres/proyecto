@@ -46,5 +46,9 @@ fig = px.histogram(filtered_data, x="odometer")
 fig = px.scatter(filtered_data, x="odometer", y="price")
 
 st.sidebar.header("Filtros")
-price_range = st.sidebar.slider(...)
-type_option = st.sidebar.selectbox(...)
+price_range = st.sidebar.slider(
+    "Selecciona rango de precio",
+    int(car_data["price"].min()),
+    int(car_data["price"].max()),
+    (5000, 20000)
+)
