@@ -6,7 +6,8 @@ import streamlit as st
 car_data = pd.read_csv('vehicles_us.csv')
 
 # Encabezado
-st.header("Análisis de vehículos en EE. UU.")
+st.title("🚗 Análisis de vehículos en EE. UU.")
+st.write("Explora la relación entre el precio y el kilometraje de los vehículos.")
 
 st.write("---")
 st.write("Selecciona las gráficas:")
