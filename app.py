@@ -22,3 +22,29 @@ if st.checkbox("Mostrar dispersión"):
     fig = px.scatter(car_data, x="odometer", y="price")
     st.plotly_chart(fig, use_container_width=True)
 
+price_range = st.slider(
+    "Selecciona rango de precio",
+    int(car_data["price"].min()),
+    int(car_data["price"].max()),
+    (5000, 20000)
+)
+
+filtered_data = car_data[
+    (car_data["price"] >= price_range[0]) &
+    (car_data["price"] <= price_range[1])
+]
+st.write("---")
+st.subheader("Gráficas interactivas")
+
+type_option = st.selectbox(
+    "Selecciona tipo de vehículo",
+    car_data["type"].dropna().unique()
+)
+
+filtered_data = filtered_data[filtered_data["type"] == type_option]
+fig = px.histogram(filtered_data, x="odometer")
+fig = px.scatter(filtered_data, x="odometer", y="price")
+
+st.sidebar.header("Filtros")
+price_range = st.sidebar.slider(...)
+type_option = st.sidebar.selectbox(...)
